@@ -10,7 +10,7 @@ function userMiddleware(req, res, next) {
     let userPayload = jwt.verify(token, process.env.JWT_PASS, async (err, payload) => {
       if(err)console.log("you are not authenticated: ",err);
       let response = await User.findOne({username: payload.username, password: payload.password})
-      console.log(payload);
+      console.log(payload);           
       req.headers.userId = response.id
       next()
     }

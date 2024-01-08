@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const { Admin, User, Course } = require("../db/index.js");
 
 // Admin Routes
-<<<<<<< HEAD
 router.post("/signup", async (req, res) => {
   // Implement admin signup logic
   let admin = {
@@ -53,28 +52,12 @@ router.post("/courses", adminMiddleware, async (req, res) => {
   res.status(200).json({ message: 'Course created successfully', courseId: courseId })
 });
 
-router.get("/courses", adminMiddleware, async (req, res) => {
+router.get("/courses", adminMiddleware, async (req, res) => {x``
   // Implement fetching all courses logic
   let token = req.headers.Authorization
   console.log(token);
   let courses = await Course.find({author: req.adminId})
   res.status(200).json({courses: courses})
-=======
-router.post('/signup', (req, res) => {
-    // Implement admin signup logic
-});
-
-router.post('/signin', (req, res) => {
-    // Implement admin signup logic
-});
-
-router.post('/courses', adminMiddleware, (req, res) => {
-    // Implement course creation logic
-});
-
-router.get('/courses', adminMiddleware, (req, res) => {
-    // Implement fetching all courses logic
->>>>>>> c428b9699bf630c5f3d6b445655d9717a893fd4c
-});
+})
 
 module.exports = router;

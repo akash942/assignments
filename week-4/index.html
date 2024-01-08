@@ -7,12 +7,22 @@
     let todoState = [];
     let oldTodoState = [];
 
-    function addTodoToDom() {
-      
+    function addTodoToDom(Todo) {
+      let todos = document.getElementById("todos")
+      let todo = document.createElement("div")
+      todo.setAttribute("id",Todo.id)
+      let title = document.createElement("h1")
+      title.innerHTML = Todo.title
+      todo.appendChild(title)
+      let description = document.createElement("p")
+      description.innerHTML = Todo.description
+      todo.appendChild(description)
+      todos.appendChild(todo)
+      console.log("added");
     }
 
     function removeTodoFromDom(todo) {
-      
+      document.getElementById(todo.id).remove()
     }
 
     function updateTodoInDom(oldTodo, newTodo) {
@@ -32,6 +42,9 @@
       // call addTodo, removeTodo, updateTodo functions on each of the
       // elements
       oldTodoState = newTodos;
+
+      addTodoToDom(newTodos[0])
+      
     }
 
     function addTodo() {
